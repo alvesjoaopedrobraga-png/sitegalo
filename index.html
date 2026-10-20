@@ -1,0 +1,71 @@
+<html>
+    <head>
+        <title>Firebase_form</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <div class="box">
+            <div class="form">
+                <h2>login form</h2>
+                <form>
+                    <div class="inputbox">
+                        <input type="text" value="" id="username" placeholder="ex: Joao" required>
+                        <span>username</span>
+                    </div>
+                    <div class="inputbox">
+                        <input type="email" value="" id="email" placeholder="joaolindo@gmail.com" required>
+                        <span>E-mail</span>
+                    </div>
+                    <div class="inputbox">
+                        <input type="text" value="" id="phone" placeholder="31990770782" required>
+
+                        <span>Phone Number</span>
+                    </div>
+                    <input type="submit" value="submit" class="sub" id="submit">
+                </form>
+            </div>
+        </div>
+
+
+
+
+
+<script type="module">
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/12.13.0/firebase-app.js";
+    import {getDatabase, ref, set, get, child } from "https://www.gstatic.com/firebasejs/12.13.0/firebase-database.js";
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
+  
+    const firebaseConfig = {
+  apiKey: "AIzaSyCvlrURMrRym2NaEJhUe1ggQr64pJvoWqU",
+  authDomain: "fire-base-one-ee711.firebaseapp.com",
+  databaseURL: "https://fire-base-one-ee711-default-rtdb.firebaseio.com",
+  projectId: "fire-base-one-ee711",
+  storageBucket: "fire-base-one-ee711.firebasestorage.app",
+  messagingSenderId: "64130406204", 
+  appId: "1:64130406204:web:dafe941a8e7736d2ccb039"
+};
+  
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    //get ref to database services
+    const db = getDatabase(app);
+
+    document.getElementById("submit").addEventListener('click', function(e){
+    e.preventDefault();
+    set(ref(db, 'JoaoPedro/' + document.getElementById("username".value)),
+    {
+               username: document.getElementById("username").value,
+               email: document.getElementById("email").value,
+               PhoneNumber: document.getElementById("phone").value
+               });
+                alert("Login Sucessfull !");
+                })
+                </script>
+        </body>
+    </html>
+  
+
+
+
